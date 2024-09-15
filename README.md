@@ -18,6 +18,8 @@ Full-stack Instagram Clone with React Native and AWS.
 - Single Post Component UI
 - <img src="https://github.com/user-attachments/assets/89400709-8908-4895-8922-436df599ec95" alt="Single Post Component UI" width="200px" height="400px" />
 
+- Carousel
+- <img src="" alt="Carousel video" width="200px" height="400px" />
 
 ## Development Notes
 
@@ -26,7 +28,7 @@ Full-stack Instagram Clone with React Native and AWS.
   - ✅ Single Post Component UI
   - ✅ Feed List
   - ✅ Likes state
-  - ☑️ Image Carousel
+  - ✅ Image Carousel
   - ☑️ Video Post
   - ☑️ Comments Page
   - ☑️ Comment Input
