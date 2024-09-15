@@ -1,25 +1,32 @@
 import React from 'react';
 import styles from './styles';
-import {View, Image, Text} from 'react-native';
+import { View, Image, Text } from 'react-native';
 
 import colors from '../../theme/colors';
+import Comment from '../Comment';
+import type { IPost } from '../../Models';
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const FeedPost = () => {
+interface FeedPostProps {
+  post: IPost;
+}
+
+const FeedPost = ({ post }: FeedPostProps) => {
+  const { user, image, description, createdAt, nofLikes, comments } = post;
   return (
     <View style={styles.post}>
       <View style={styles.header}>
         <Image
           source={{
-            uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/1.jpg',
+            uri: user.image,
           }}
           style={styles.userAvatar}
         />
-        <Text style={styles.userName}>username</Text>
+        <Text style={styles.userName}>{user.username}</Text>
         <Entypo
           name="dots-three-horizontal"
           size={16}
@@ -30,7 +37,7 @@ const FeedPost = () => {
 
       <Image
         source={{
-          uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/1.jpg',
+          uri: image,
         }}
         style={styles.image}
       />
@@ -58,33 +65,29 @@ const FeedPost = () => {
           <Feather
             name="bookmark"
             size={24}
-            style={{marginLeft: 'auto'}}
+            style={{ marginLeft: 'auto' }}
             color={colors.black}
           />
         </View>
         <Text style={styles.text}>
-          Liked by <Text style={styles.bold}>bla bla</Text> and{' '}
-          <Text style={styles.bold}>66 others</Text>
+          Liked by <Text style={styles.bold}>{user.username}</Text> and{' '}
+          <Text style={styles.bold}>{nofLikes} others</Text>
         </Text>
 
         {/* Post description */}
         <Text style={styles.text}>
-          <Text style={styles.bold}>omercs</Text> Lorem ipsum dolor sit amet
-          consectetur adipisicing elit.
+          <Text style={styles.bold}>{user.username}</Text> {description}
         </Text>
 
         {/* Post comments */}
-        <Text style={{color: colors.lightgrey}}>View all 100 comments</Text>
-        <View style={styles.comment}>
-          <Text style={styles.commentText}>
-            <Text style={styles.bold}>omercs</Text> Lorem ipsum dolor sit amet
-            consectetur adipisicing elit.
-          </Text>
-          <AntDesign name="hearto" size={16} color={colors.black} />
-        </View>
+        {comments.map(comment => (
+          <Comment key={comment.id} comment={comment} />
+        ))}
 
         {/* Post date */}
-        <Text style={{color: colors.lightgrey}}>1 day ago</Text>
+        <Text style={{ color: colors.lightgrey }}>
+          {new Date(createdAt).toLocaleDateString()}
+        </Text>
       </View>
     </View>
   );
