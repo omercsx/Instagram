@@ -5,17 +5,24 @@
  * @format
  */
 import React from 'react';
-import {Text, View} from 'react-native';
-import colors from './src/theme/colors';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import { ScrollView, StyleSheet } from 'react-native';
+import FeedPost from './src/components/FeedPost';
 
 function App(): React.JSX.Element {
   return (
-    <View>
-      <Text style={{color: colors.primary}}>Hello Worlds </Text>
-      <AntDesign name="home" size={24} color="black" />
-    </View>
+    <ScrollView style={styles.container}>
+      <FeedPost />
+      <FeedPost />
+      <FeedPost />
+    </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginVertical: 50,
+  },
+});
 
 export default App;
