@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './styles';
 import { View, Image, Text } from 'react-native';
 
@@ -16,6 +16,17 @@ interface FeedPostProps {
 }
 
 const FeedPost = ({ post }: FeedPostProps) => {
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const toggleDescriptionExpanded = () => {
+    setIsDescriptionExpanded(v => !v);
+  };
+
+  const toggleLiked = () => {
+    setIsLiked(v => !v);
+  };
+
   const {
     user,
     image,
@@ -53,10 +64,11 @@ const FeedPost = ({ post }: FeedPostProps) => {
       <View style={styles.footer}>
         <View style={styles.iconContainer}>
           <AntDesign
-            name={'hearto'}
+            name={isLiked ? 'heart' : 'hearto'}
             size={24}
             style={styles.icon}
-            color={colors.black}
+            color={isLiked ? colors.accent : colors.black}
+            onPress={toggleLiked}
           />
           <Ionicons
             name="chatbubble-outline"
@@ -83,8 +95,13 @@ const FeedPost = ({ post }: FeedPostProps) => {
         </Text>
 
         {/* Post description */}
-        <Text style={styles.text}>
+        <Text style={styles.text} numberOfLines={isDescriptionExpanded ? 0 : 2}>
           <Text style={styles.bold}>{user.username}</Text> {description}
+        </Text>
+        <Text
+          onPress={toggleDescriptionExpanded}
+          style={{ color: colors.primary }}>
+          {isDescriptionExpanded ? 'less' : 'more'}
         </Text>
 
         {/* Post comments */}

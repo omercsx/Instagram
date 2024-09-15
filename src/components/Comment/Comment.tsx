@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -14,13 +14,24 @@ interface CommentProps {
 
 const Comment = ({ comment }: CommentProps) => {
   const { user, comment: commentBody } = comment;
+  const [isLiked, setIsLiked] = useState(false);
+
+  const toggleLiked = () => {
+    setIsLiked(v => !v);
+  };
+
   return (
     <View style={styles.comment}>
       <Text style={styles.commentText}>
         <Text style={styles.bold}>{user.username}</Text>
         {commentBody}
       </Text>
-      <AntDesign name="hearto" size={16} color={colors.black} />
+      <AntDesign
+        name={isLiked ? 'heart' : 'hearto'}
+        size={16}
+        color={isLiked ? colors.accent : colors.black}
+        onPress={toggleLiked}
+      />
     </View>
   );
 };
