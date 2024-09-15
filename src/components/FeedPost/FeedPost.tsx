@@ -10,6 +10,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import DoublePressable from '../DoublePressable';
 
 interface FeedPostProps {
   post: IPost;
@@ -36,6 +37,7 @@ const FeedPost = ({ post }: FeedPostProps) => {
     nofComments,
     comments,
   } = post;
+
   return (
     <View style={styles.post}>
       <View style={styles.header}>
@@ -54,12 +56,14 @@ const FeedPost = ({ post }: FeedPostProps) => {
         />
       </View>
 
-      <Image
-        source={{
-          uri: image,
-        }}
-        style={styles.image}
-      />
+      <DoublePressable onDoublePress={toggleLiked} prevLike={isLiked}>
+        <Image
+          source={{
+            uri: image,
+          }}
+          style={styles.image}
+        />
+      </DoublePressable>
 
       <View style={styles.footer}>
         <View style={styles.iconContainer}>

@@ -7,6 +7,7 @@ import colors from '../../theme/colors';
 import styles from './styles';
 
 import type { IComment } from '../../Models';
+import DoublePressable from '../DoublePressable';
 
 interface CommentProps {
   comment: IComment;
@@ -21,18 +22,20 @@ const Comment = ({ comment }: CommentProps) => {
   };
 
   return (
-    <View style={styles.comment}>
-      <Text style={styles.commentText}>
-        <Text style={styles.bold}>{user.username}</Text>
-        {commentBody}
-      </Text>
-      <AntDesign
-        name={isLiked ? 'heart' : 'hearto'}
-        size={16}
-        color={isLiked ? colors.accent : colors.black}
-        onPress={toggleLiked}
-      />
-    </View>
+    <DoublePressable onDoublePress={toggleLiked} prevLike={isLiked}>
+      <View style={styles.comment}>
+        <Text style={styles.commentText}>
+          <Text style={styles.bold}>{user.username}</Text>
+          {commentBody}
+        </Text>
+        <AntDesign
+          name={isLiked ? 'heart' : 'hearto'}
+          size={16}
+          color={isLiked ? colors.accent : colors.black}
+          onPress={toggleLiked}
+        />
+      </View>
+    </DoublePressable>
   );
 };
 
