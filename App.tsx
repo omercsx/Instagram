@@ -5,15 +5,14 @@
  * @format
  */
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import FeedPost from './src/components/FeedPost';
-import { post } from './src/assets/post';
+import { View, StyleSheet } from 'react-native';
+import HomeScreen from './src/screens/HomeScreen';
 
 function App(): React.JSX.Element {
   return (
-    <ScrollView style={styles.app}>
-      <FeedPost post={post} />
-    </ScrollView>
+    <View style={styles.app}>
+      <HomeScreen />
+    </View>
   );
 }
 
