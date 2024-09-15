@@ -16,7 +16,15 @@ interface FeedPostProps {
 }
 
 const FeedPost = ({ post }: FeedPostProps) => {
-  const { user, image, description, createdAt, nofLikes, comments } = post;
+  const {
+    user,
+    image,
+    description,
+    createdAt,
+    nofLikes,
+    nofComments,
+    comments,
+  } = post;
   return (
     <View style={styles.post}>
       <View style={styles.header}>
@@ -80,14 +88,16 @@ const FeedPost = ({ post }: FeedPostProps) => {
         </Text>
 
         {/* Post comments */}
+        <Text style={{ color: colors.lightgrey }}>
+          View all {nofComments} comments
+        </Text>
+
         {comments.map(comment => (
           <Comment key={comment.id} comment={comment} />
         ))}
 
         {/* Post date */}
-        <Text style={{ color: colors.lightgrey }}>
-          {new Date(createdAt).toLocaleDateString()}
-        </Text>
+        <Text style={{ color: colors.lightgrey }}>{createdAt}</Text>
       </View>
     </View>
   );

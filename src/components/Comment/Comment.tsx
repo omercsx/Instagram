@@ -15,16 +15,13 @@ interface CommentProps {
 const Comment = ({ comment }: CommentProps) => {
   const { user, comment: commentBody } = comment;
   return (
-    <>
-      <Text style={{ color: colors.lightgrey }}>View all 100 comments</Text>
-      <View style={styles.comment}>
-        <Text style={styles.commentText}>
-          <Text style={styles.bold}>{user.username}</Text>
-          {commentBody}
-        </Text>
-        <AntDesign name="hearto" size={16} color={colors.black} />
-      </View>
-    </>
+    <View style={styles.comment}>
+      <Text style={styles.commentText}>
+        <Text style={styles.bold}>{user.username}</Text>
+        {commentBody}
+      </Text>
+      <AntDesign name="hearto" size={16} color={colors.black} />
+    </View>
   );
 };
 
