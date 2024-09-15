@@ -4,13 +4,13 @@ import { View, Image, Text } from 'react-native';
 
 import colors from '../../theme/colors';
 import Comment from '../Comment';
+import Carousel from '../Carousel';
 import type { IPost } from '../../Models';
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import DoublePressable from '../DoublePressable';
 
 interface FeedPostProps {
   post: IPost;
@@ -20,6 +20,17 @@ const FeedPost = ({ post }: FeedPostProps) => {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
+  const {
+    user,
+    image,
+    images,
+    description,
+    createdAt,
+    nofLikes,
+    nofComments,
+    comments,
+  } = post;
+
   const toggleDescriptionExpanded = () => {
     setIsDescriptionExpanded(v => !v);
   };
@@ -28,15 +39,25 @@ const FeedPost = ({ post }: FeedPostProps) => {
     setIsLiked(v => !v);
   };
 
-  const {
-    user,
-    image,
-    description,
-    createdAt,
-    nofLikes,
-    nofComments,
-    comments,
-  } = post;
+  let content = null;
+  if (image) {
+    content = (
+      <Image
+        source={{
+          uri: post.image,
+        }}
+        style={styles.image}
+      />
+    );
+  } else if (images) {
+    content = (
+      <Carousel
+        images={images}
+        onDoublePress={toggleLiked}
+        prevLike={isLiked}
+      />
+    );
+  }
 
   return (
     <View style={styles.post}>
@@ -56,14 +77,7 @@ const FeedPost = ({ post }: FeedPostProps) => {
         />
       </View>
 
-      <DoublePressable onDoublePress={toggleLiked} prevLike={isLiked}>
-        <Image
-          source={{
-            uri: image,
-          }}
-          style={styles.image}
-        />
-      </DoublePressable>
+      {content}
 
       <View style={styles.footer}>
         <View style={styles.iconContainer}>

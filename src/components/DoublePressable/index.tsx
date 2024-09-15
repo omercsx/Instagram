@@ -2,15 +2,15 @@ import React from 'react';
 import { Pressable } from 'react-native';
 
 interface DoublePressableProps {
-  onDoublePress: () => void;
-  prevLike: boolean;
+  onDoublePress?: () => void;
+  prevLike?: boolean;
   children: React.ReactNode;
 }
 
 const DoublePressable = ({
-  onDoublePress,
+  onDoublePress = () => {},
   children,
-  prevLike,
+  prevLike = false,
 }: DoublePressableProps) => {
   let lastTap = 0;
   const handleDoublePress = () => {
