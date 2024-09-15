@@ -25,8 +25,7 @@ const Comment = ({ comment }: CommentProps) => {
     <DoublePressable onDoublePress={toggleLiked} prevLike={isLiked}>
       <View style={styles.comment}>
         <Text style={styles.commentText}>
-          <Text style={styles.bold}>{user.username}</Text>
-          {commentBody}
+          <Text style={styles.bold}>{user.username}</Text> {commentBody}
         </Text>
         <AntDesign
           name={isLiked ? 'heart' : 'hearto'}
