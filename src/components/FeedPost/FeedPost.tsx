@@ -11,6 +11,8 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import DoublePressable from '../DoublePressable';
+import VideoPlayer from '../VideoPlayer';
 
 interface FeedPostProps {
   post: IPost;
@@ -29,6 +31,7 @@ const FeedPost = ({ post }: FeedPostProps) => {
     nofLikes,
     nofComments,
     comments,
+    video,
   } = post;
 
   const toggleDescriptionExpanded = () => {
@@ -56,6 +59,12 @@ const FeedPost = ({ post }: FeedPostProps) => {
         onDoublePress={toggleLiked}
         prevLike={isLiked}
       />
+    );
+  } else if (video) {
+    content = (
+      <DoublePressable onDoublePress={toggleLiked} prevLike={isLiked}>
+        <VideoPlayer uri={video} />
+      </DoublePressable>
     );
   }
 

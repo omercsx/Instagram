@@ -2915,6 +2915,7 @@ __metadata:
     react: "npm:18.3.1"
     react-native: "npm:0.75.3"
     react-native-vector-icons: "npm:^10.1.0"
+    react-native-video: "npm:^6.5.0"
     react-test-renderer: "npm:18.3.1"
     typescript: "npm:5.0.4"
   languageName: unknown
@@ -7855,6 +7856,16 @@ __metadata:
     fa6-upgrade: bin/fa6-upgrade.sh
     generate-icon: bin/generate-icon.js
   checksum: 10c0/fd6df2090857c7b124a0d2d800fb8c5fc1b1fa78e0af5136bd984bdd5690cf46ea7961689d41c5f324cb21f6b5375643d50384132d9321f52e73e7e6f1f7dd46
+  languageName: node
+  linkType: hard
+
+"react-native-video@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "react-native-video@npm:6.5.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/55906a7f1eb01001ddb8eff7848c72ad3cf75e893d2b48926e5ff48c2a3e2ef91a0c31ecb1d9889198d2036921feb300f98c12ea162d28c8f8d25e606b6022cf
   languageName: node
   linkType: hard
 
