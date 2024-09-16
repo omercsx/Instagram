@@ -16,9 +16,10 @@ import VideoPlayer from '../VideoPlayer';
 
 interface FeedPostProps {
   post: IPost;
+  isVisible: boolean;
 }
 
-const FeedPost = ({ post }: FeedPostProps) => {
+const FeedPost = ({ post, isVisible }: FeedPostProps) => {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -63,7 +64,7 @@ const FeedPost = ({ post }: FeedPostProps) => {
   } else if (video) {
     content = (
       <DoublePressable onDoublePress={toggleLiked} prevLike={isLiked}>
-        <VideoPlayer uri={video} />
+        <VideoPlayer uri={video} paused={!isVisible} />
       </DoublePressable>
     );
   }

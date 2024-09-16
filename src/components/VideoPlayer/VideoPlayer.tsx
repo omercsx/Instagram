@@ -7,9 +7,10 @@ import { TouchableOpacity } from 'react-native';
 
 interface VideoPlayerProps {
   uri: string;
+  paused: boolean;
 }
 
-const VideoPlayer = ({ uri }: VideoPlayerProps) => {
+const VideoPlayer = ({ uri, paused }: VideoPlayerProps) => {
   const videoRef = useRef<VideoRef>(null);
   const [isMuted, setIsMuted] = useState(true);
   const toggleMuted = () => {
@@ -25,6 +26,7 @@ const VideoPlayer = ({ uri }: VideoPlayerProps) => {
         resizeMode="contain"
         repeat
         muted={isMuted}
+        paused={paused}
         onTouchEnd={toggleMuted}
       />
       <TouchableOpacity style={styles.mutedButton} onPress={toggleMuted}>
