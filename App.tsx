@@ -7,7 +7,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import CommentsScreen from './src/screens/CommentsScreen';
-import HomeScreen from './src/screens/HomeScreen';
+// import HomeScreen from './src/screens/HomeScreen';
 
 function App(): React.JSX.Element {
   return (
