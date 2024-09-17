@@ -6,12 +6,12 @@
  */
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import HomeScreen from './src/screens/HomeScreen';
+import CommentsScreen from './src/screens/CommentsScreen';
 
 function App(): React.JSX.Element {
   return (
     <View style={styles.app}>
-      <HomeScreen />
+      <CommentsScreen />
     </View>
   );
 }
