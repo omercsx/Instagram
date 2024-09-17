@@ -27,9 +27,9 @@ Full-stack Instagram Clone with React Native and AWS.
   - ✅ Feed List
   - ✅ Likes state
   - ✅ Image Carousel
-  - ☑️ Video Post
-  - ☑️ Comments Page
-  - ☑️ Comment Input
+  - ✅ Video Post
+  - ✅ Comments Page
+  - ✅ Comment Input
   - ☑️ Profile Page
   - ☑️ Edit Profile UI
   - ☑️ Image Picker
