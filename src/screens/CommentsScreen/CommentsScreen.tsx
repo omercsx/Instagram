@@ -1,12 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, FlatList } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 import comments from '../../assets/data/comments.json';
+import Comment from '../../components/Comment';
 
 const CommentsScreen = () => {
   return (
     <FlatList
       data={comments}
-      renderItem={({ item }) => <Text>{item.comment}</Text>}
+      renderItem={({ item }) => <Comment comment={item} includeDetails />}
       style={styles.comments}
     />
   );
