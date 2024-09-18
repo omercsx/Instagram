@@ -8,12 +8,12 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 // import CommentsScreen from './src/screens/CommentsScreen';
 // import HomeScreen from './src/screens/HomeScreen';
-import ProfileScreen from './src/screens/ProfileScreen';
+import EditProfileScreen from './src/screens/EditProfileScreen';
 
 function App(): React.JSX.Element {
   return (
     <View style={styles.app}>
-      <ProfileScreen />
+      <EditProfileScreen />
     </View>
   );
 }
