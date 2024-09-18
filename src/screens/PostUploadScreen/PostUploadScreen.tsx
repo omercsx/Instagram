@@ -104,7 +104,7 @@ const PostUploadScreen = () => {
         facing={facing}
         flash={flash}
         onCameraReady={() => setIsCameraReady(true)}>
-        <View style={[styles.buttonsContainer, { top: 10 }]}>
+        <View style={[styles.buttonsContainer, { top: 5 }]}>
           <TouchableOpacity>
             <MaterialIcons name="close" size={30} color="white" />
           </TouchableOpacity>
@@ -119,7 +119,7 @@ const PostUploadScreen = () => {
             <MaterialIcons name="settings" size={30} color="white" />
           </TouchableOpacity>
         </View>
-        <View style={[styles.buttonsContainer, { bottom: 10 }]}>
+        <View style={[styles.buttonsContainer, { bottom: 5 }]}>
           <TouchableOpacity>
             <MaterialIcons name="photo-library" size={30} color="white" />
           </TouchableOpacity>

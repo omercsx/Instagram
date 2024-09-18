@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import styles from './styles';
 import { View, Image, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import colors from '../../theme/colors';
 import Comment from '../Comment';
 import Carousel from '../Carousel';
 import type { IPost } from '../../Models';
+import DoublePressable from '../DoublePressable';
+import VideoPlayer from '../VideoPlayer';
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import DoublePressable from '../DoublePressable';
-import VideoPlayer from '../VideoPlayer';
 
 interface FeedPostProps {
   post: IPost;
@@ -22,6 +23,7 @@ interface FeedPostProps {
 const FeedPost = ({ post, isVisible }: FeedPostProps) => {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const navigation = useNavigation();
 
   const {
     user,
@@ -34,6 +36,10 @@ const FeedPost = ({ post, isVisible }: FeedPostProps) => {
     comments,
     video,
   } = post;
+
+  const navigateToUser = () => {
+    navigation.navigate('UserProfile', { userId: user.id });
+  };
 
   const toggleDescriptionExpanded = () => {
     setIsDescriptionExpanded(v => !v);
@@ -78,7 +84,9 @@ const FeedPost = ({ post, isVisible }: FeedPostProps) => {
           }}
           style={styles.userAvatar}
         />
-        <Text style={styles.userName}>{user.username}</Text>
+        <Text style={styles.userName} onPress={navigateToUser}>
+          {user.username}
+        </Text>
         <Entypo
           name="dots-three-horizontal"
           size={16}
