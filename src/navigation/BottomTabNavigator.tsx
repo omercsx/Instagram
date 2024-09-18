@@ -10,6 +10,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from '../theme/colors';
+import ProfileStackNavigator from './ProfileStackNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -71,8 +72,8 @@ const BottomTabNavigator = () => {
       />
       <Tab.Screen
         name="MyProfile"
-        component={ProfileScreen}
-        options={{ tabBarIcon: ProfileIcon }}
+        component={ProfileStackNavigator}
+        options={{ tabBarIcon: ProfileIcon, headerShown: false }}
       />
     </Tab.Navigator>
   );

@@ -1,11 +1,14 @@
 import React from 'react';
+import { View, Text, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
-import { View, Text, Image } from 'react-native';
 import user from '../../assets/data/user.json';
 import Button from '../../components/Button';
 
 const ProfileHeader = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.root}>
       <View style={styles.headerRow}>
@@ -30,7 +33,10 @@ const ProfileHeader = () => {
       <Text style={styles.bio}>{user.bio}</Text>
 
       <View style={styles.buttonContainer}>
-        <Button text="Edit Profile" onPress={() => {}} />
+        <Button
+          text="Edit Profile"
+          onPress={() => navigation.navigate('EditProfile')}
+        />
         <Button text="Another Button" onPress={() => {}} />
       </View>
     </View>
