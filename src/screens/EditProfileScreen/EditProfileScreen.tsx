@@ -13,7 +13,7 @@ const EditProfileScreen = () => {
     defaultValues: {
       name: user.name,
       username: user.username,
-      website: user.website ?? '',
+      website: (user as any).website ?? '',
       bio: user.bio,
     },
   });
