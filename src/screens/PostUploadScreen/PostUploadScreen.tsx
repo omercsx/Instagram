@@ -1,12 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { Camera, CameraView, type CameraType } from 'expo-camera';
+import {
+  Camera,
+  CameraView,
+  type CameraPictureOptions,
+  type CameraRecordingOptions,
+  type CameraType,
+} from 'expo-camera';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const PostUploadScreen = () => {
   const [facing, setFacing] = useState<CameraType>('back');
   const [flash, setFlash] = useState<'on' | 'off'>('off');
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
+  const [isCameraReady, setIsCameraReady] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
+
+  const cameraRef = useRef<CameraView>(null);
 
   useEffect(() => {
     const getPermission = async () => {
@@ -29,6 +39,47 @@ const PostUploadScreen = () => {
     setFlash(current => (current === 'on' ? 'off' : 'on'));
   };
 
+  const startRecording = async () => {
+    if (!isCameraReady || isRecording || !cameraRef.current) {
+      return;
+    }
+
+    const options: CameraRecordingOptions = {
+      maxDuration: 60,
+      maxFileSize: 10 * 1024 * 1024, // 10 MB
+    };
+
+    try {
+      setIsRecording(true);
+      const result = await cameraRef.current.recordAsync(options);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsRecording(false);
+    }
+  };
+
+  const stopRecording = () => {
+    if (isRecording) {
+      cameraRef.current?.stopRecording();
+      setIsRecording(false);
+    }
+  };
+
+  const takePicture = async () => {
+    if (isCameraReady) {
+      const options: CameraPictureOptions = {
+        quality: 1,
+        base64: false, // for backend, we can use base64
+        skipProcessing: true, // on android, we need to skip processing because it takes too long
+      };
+
+      const photo = await cameraRef.current?.takePictureAsync(options);
+      console.log(photo);
+    }
+  };
+
   if (hasPermission === null) {
     return (
       <View style={styles.page}>
@@ -47,7 +98,12 @@ const PostUploadScreen = () => {
 
   return (
     <View style={styles.page}>
-      <CameraView style={styles.camera} facing={facing} flash={flash}>
+      <CameraView
+        style={styles.camera}
+        ref={cameraRef}
+        facing={facing}
+        flash={flash}
+        onCameraReady={() => setIsCameraReady(true)}>
         <View style={[styles.buttonsContainer, { top: 10 }]}>
           <TouchableOpacity>
             <MaterialIcons name="close" size={30} color="white" />
@@ -67,7 +123,14 @@ const PostUploadScreen = () => {
           <TouchableOpacity>
             <MaterialIcons name="photo-library" size={30} color="white" />
           </TouchableOpacity>
-          <View style={styles.circle} />
+          {isCameraReady && (
+            <TouchableOpacity
+              onPress={takePicture}
+              onLongPress={startRecording}
+              onPressOut={stopRecording}>
+              <View style={[styles.circle, isRecording && styles.recording]} />
+            </TouchableOpacity>
+          )}
           <TouchableOpacity onPress={toggleCameraFacing}>
             <MaterialIcons name="flip-camera-ios" size={30} color="white" />
           </TouchableOpacity>
@@ -105,5 +168,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     position: 'absolute',
+  },
+
+  recording: {
+    backgroundColor: 'red',
   },
 });
