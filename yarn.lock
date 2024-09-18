@@ -2915,6 +2915,7 @@ __metadata:
     react: "npm:18.3.1"
     react-hook-form: "npm:^7.53.0"
     react-native: "npm:0.75.3"
+    react-native-image-picker: "npm:^7.1.2"
     react-native-vector-icons: "npm:^10.1.0"
     react-native-video: "npm:^6.5.0"
     react-test-renderer: "npm:18.3.1"
@@ -7851,6 +7852,16 @@ __metadata:
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 10c0/2bdb6b93fbb1820b024b496042cce405c57e2f85e777c9aabd55f9b26d145408f9f74f5934676ffdc46f3dcff656d78413a6e43968e7b3f92eea35b3052e9053
+  languageName: node
+  linkType: hard
+
+"react-native-image-picker@npm:^7.1.2":
+  version: 7.1.2
+  resolution: "react-native-image-picker@npm:7.1.2"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/3621e2462b4026ba2d3e0d71179161a09bf744b09ed53cf62944356971fc6204e06845298d99e69437517a51b5b7b434318e16018e62e14a3031976b67e801a3
   languageName: node
   linkType: hard
 
