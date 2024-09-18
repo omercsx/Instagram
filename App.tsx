@@ -9,12 +9,15 @@ import { View, StyleSheet } from 'react-native';
 // import CommentsScreen from './src/screens/CommentsScreen';
 // import HomeScreen from './src/screens/HomeScreen';
 import PostUploadScreen from './src/screens/PostUploadScreen';
+import { NavigationContainer } from '@react-navigation/native';
 
 function App(): React.JSX.Element {
   return (
-    <View style={styles.app}>
-      <PostUploadScreen />
-    </View>
+    <NavigationContainer>
+      <View style={styles.app}>
+        <PostUploadScreen />
+      </View>
+    </NavigationContainer>
   );
 }
 
