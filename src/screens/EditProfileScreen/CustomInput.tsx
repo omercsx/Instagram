@@ -1,22 +1,54 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import colors from '../../theme/colors';
+import { Control, Controller } from 'react-hook-form';
+import type { IUser } from '../../Models';
+
+export type IEditableUser = Pick<
+  IUser,
+  'username' | 'name' | 'website' | 'bio'
+>;
 
 interface CustomInputProps {
   label: string;
+  control: Control<IEditableUser, object>;
+  name: keyof IEditableUser;
+  rules?: {};
   multiline?: boolean;
 }
 
-const CustomInput = ({ label, multiline = false }: CustomInputProps) => {
+const CustomInput = ({
+  label,
+  control,
+  name,
+  rules,
+  multiline = false,
+}: CustomInputProps) => {
   return (
-    <View style={styles.inputContainer}>
-      <Text style={styles.label}>{label}</Text>
-      <TextInput
-        style={styles.input}
-        placeholder={label}
-        multiline={multiline}
-      />
-    </View>
+    <Controller
+      control={control}
+      name={name}
+      rules={rules}
+      render={({
+        field: { value, onChange, onBlur },
+        fieldState: { error },
+      }) => (
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>{label}</Text>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              value={value?.toLowerCase()}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              style={styles.input}
+              placeholder={label}
+              multiline={multiline}
+            />
+            {error && <Text style={styles.error}>{error.message}</Text>}
+          </View>
+        </View>
+      )}
+    />
   );
 };
 
@@ -37,7 +69,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: colors.border,
     borderRadius: 5,
-    flex: 1,
+
     padding: 5,
+  },
+  inputWrapper: {
+    flex: 1,
+  },
+  error: {
+    color: 'red',
   },
 });
