@@ -13,11 +13,7 @@ Full-stack Instagram Clone with React Native and AWS.
 
 ## Photos and Videos of the app
 
-### Development Stage Photos and Videos
-
-- Single Post Component UI implemented
-- Carousel and double tap like implemented
-- <img src="https://github.com/user-attachments/assets/eb333934-3b48-4240-9308-eea1c452922f" alt="Carousel video" width="200px" height="400px" />
+<img src="https://github.com/user-attachments/assets/9dde3a43-f20b-406e-9bbb-4f2621edd51c" alt="App video" width="200px" height="400px" />
 
 ## Development Notes
 
