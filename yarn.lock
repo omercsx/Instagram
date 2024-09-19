@@ -3159,6 +3159,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-navigation/material-top-tabs@npm:^6.6.14":
+  version: 6.6.14
+  resolution: "@react-navigation/material-top-tabs@npm:6.6.14"
+  dependencies:
+    color: "npm:^4.2.3"
+    warn-once: "npm:^0.1.0"
+  peerDependencies:
+    "@react-navigation/native": ^6.0.0
+    react: "*"
+    react-native: "*"
+    react-native-pager-view: ">= 4.0.0"
+    react-native-tab-view: ">= 3.0.0"
+  checksum: 10c0/eb4adab3fe3b311dd51e71abb8ed040e5e0d7aa7aea04822e7f0dafa1e0cc73a4145d558fa9ae71b5f9ec0b36f74cf60bf61476dce1c758a8cb95943303c0747
+  languageName: node
+  linkType: hard
+
 "@react-navigation/native-stack@npm:^6.11.0":
   version: 6.11.0
   resolution: "@react-navigation/native-stack@npm:6.11.0"
@@ -3712,6 +3728,7 @@ __metadata:
     "@react-native/metro-config": "npm:0.75.3"
     "@react-native/typescript-config": "npm:0.75.3"
     "@react-navigation/bottom-tabs": "npm:^6.6.1"
+    "@react-navigation/material-top-tabs": "npm:^6.6.14"
     "@react-navigation/native": "npm:^6.1.18"
     "@react-navigation/native-stack": "npm:^6.11.0"
     "@types/react": "npm:^18.2.6"
@@ -3727,8 +3744,10 @@ __metadata:
     react-hook-form: "npm:^7.53.0"
     react-native: "npm:0.75.3"
     react-native-image-picker: "npm:^7.1.2"
+    react-native-pager-view: "npm:^6.4.1"
     react-native-safe-area-context: "npm:^4.11.0"
     react-native-screens: "npm:^3.34.0"
+    react-native-tab-view: "npm:^3.5.2"
     react-native-vector-icons: "npm:^10.1.0"
     react-native-video: "npm:^6.5.0"
     react-test-renderer: "npm:18.3.1"
@@ -9950,6 +9969,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-pager-view@npm:^6.4.1":
+  version: 6.4.1
+  resolution: "react-native-pager-view@npm:6.4.1"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/df201741c0497c304805266f1e011f54670a522beb0db0fe02ed2c95fc7914b36fe2c00fc93a59b4e369aa85b93dbed154e132f9bbf022e03df1ad10c53f8cbc
+  languageName: node
+  linkType: hard
+
 "react-native-safe-area-context@npm:^4.11.0":
   version: 4.11.0
   resolution: "react-native-safe-area-context@npm:4.11.0"
@@ -9970,6 +9999,19 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10c0/568af49a1d79797ebecf5b8c815d44b651b0affdd82d7a8024b9e5e71250a23e108d73562200ef571b806c6a9ebba0484510e710246165dbdc50ad18e4d77619
+  languageName: node
+  linkType: hard
+
+"react-native-tab-view@npm:^3.5.2":
+  version: 3.5.2
+  resolution: "react-native-tab-view@npm:3.5.2"
+  dependencies:
+    use-latest-callback: "npm:^0.1.5"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-pager-view: "*"
+  checksum: 10c0/f243afcb1ee49642f6d13039725634cd3cc4205cef611b27fc305d99a0064566fbaabeea8ef12367fbf4c13095f5b48e20b517ad3885ced3827fd57c6190e3e4
   languageName: node
   linkType: hard
 
@@ -11759,6 +11801,15 @@ __metadata:
   version: 4.0.0
   resolution: "url-join@npm:4.0.0"
   checksum: 10c0/1aa466cfa128adab76dc9e559b38e2171df51e6105b5773382c3726e5a29971da013e4f9f5c36f1414ef1e5f1af535cfaf29611b53b0d2fc4f311f7b41199d13
+  languageName: node
+  linkType: hard
+
+"use-latest-callback@npm:^0.1.5":
+  version: 0.1.11
+  resolution: "use-latest-callback@npm:0.1.11"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 10c0/8361ccd3e121552173a27fad67bd226e0cc8acf377073357a7ce83f516be3993b57111eb0e5a8748932543ff6bf4d202200de6e8ba6fa78ae111f44d05404128
   languageName: node
   linkType: hard
 

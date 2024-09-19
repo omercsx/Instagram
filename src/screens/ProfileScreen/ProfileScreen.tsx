@@ -2,7 +2,7 @@ import React from 'react';
 
 // import { useNavigation } from '@react-navigation/native';
 // import { useRoute } from '@react-navigation/native';
-import type { IPost } from '../../Models';
+import type { IPost } from '../../types/models';
 
 import user from '../../assets/data/user.json';
 

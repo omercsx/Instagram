@@ -6,7 +6,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import colors from '../../theme/colors';
 import styles from './styles';
 
-import type { IComment } from '../../Models';
+import type { IComment } from '../../types/models';
 import DoublePressable from '../DoublePressable';
 import { Image } from 'react-native';
 

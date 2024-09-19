@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
-import type { IPost } from '../../Models';
+import type { IPost } from '../../types/models';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const FeedGridItem = ({ post }: { post: IPost }) => {

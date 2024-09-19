@@ -9,8 +9,8 @@ import DoublePressable from '../DoublePressable';
 import VideoPlayer from '../VideoPlayer';
 
 import colors from '../../theme/colors';
-import type { IPost } from '../../Models';
-import type { FeedNavigationProp } from '../../navigation/types';
+import type { IPost } from '../../types/models';
+import type { FeedNavigationProp } from '../../types/navigation';
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';

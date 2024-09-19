@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import type { IPost } from '../../Models';
+import type { IPost } from '../../types/models';
 import FeedGridItem from './FeedGridItem';
 
 interface FeedGridViewProps {

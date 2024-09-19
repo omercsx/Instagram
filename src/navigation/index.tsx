@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import BottomTabNavigator from './BottomTabNavigator';
 import CommentsScreen from '../screens/CommentsScreen';
-import type { RootNavigatorParamList } from './types';
+import type { RootNavigatorParamList } from '../types/navigation';
 
 const Stack = createNativeStackNavigator<RootNavigatorParamList>();
 

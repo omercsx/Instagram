@@ -7,7 +7,7 @@ import styles from './styles';
 import user from '../../assets/data/user.json';
 import Button from '../../components/Button';
 
-import type { ProfileNavigationProp } from '../../navigation/types';
+import type { ProfileNavigationProp } from '../../types/navigation';
 
 const ProfileHeader = () => {
   const navigation = useNavigation<ProfileNavigationProp>();
