@@ -23,7 +23,7 @@ Full-stack Instagram Clone with React Native and AWS.
 
 - ✅ Project Setup
 - ✅ UI
-- ☑️ Navigation
+- ✅  Navigation
 - ☑️ AWS Amplify
 - ☑️ Authentication
 - ☑️ API
