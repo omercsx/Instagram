@@ -11,8 +11,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from '../theme/colors';
 import ProfileStackNavigator from './ProfileStackNavigator';
+import { BottomTabNavigatorParamList } from './types';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
 const HomeIcon = ({ color, size }: { color: string; size: number }) => (
   <MaterialIcons name="home" size={size} color={color} />

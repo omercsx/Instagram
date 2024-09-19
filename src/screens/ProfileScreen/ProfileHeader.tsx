@@ -1,13 +1,16 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import styles from './styles';
 
+import { useNavigation } from '@react-navigation/native';
+
+import styles from './styles';
 import user from '../../assets/data/user.json';
 import Button from '../../components/Button';
 
+import type { ProfileNavigationProp } from '../../navigation/types';
+
 const ProfileHeader = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<ProfileNavigationProp>();
 
   return (
     <View style={styles.root}>

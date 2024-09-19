@@ -3,12 +3,14 @@ import styles from './styles';
 import { View, Image, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import colors from '../../theme/colors';
 import Comment from '../Comment';
 import Carousel from '../Carousel';
-import type { IPost } from '../../Models';
 import DoublePressable from '../DoublePressable';
 import VideoPlayer from '../VideoPlayer';
+
+import colors from '../../theme/colors';
+import type { IPost } from '../../Models';
+import type { FeedNavigationProp } from '../../navigation/types';
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -23,7 +25,7 @@ interface FeedPostProps {
 const FeedPost = ({ post, isVisible }: FeedPostProps) => {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-  const navigation = useNavigation();
+  const navigation = useNavigation<FeedNavigationProp>();
 
   const {
     user,

@@ -6,8 +6,9 @@ import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 
 import logo from '../assets/images/omercslogo.png';
+import { HomeStackNavigatorParamList } from './types';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<HomeStackNavigatorParamList>();
 
 const HomeStackNavigator = () => {
   return (
