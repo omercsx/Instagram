@@ -3,8 +3,8 @@ import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import HomeScreen from '../screens/HomeScreen';
 import CommentsScreen from '../screens/CommentsScreen';
+import UserSearchScreen from '../screens/UserSearchScreen';
 
 import { SearchTabNavigatorParamList } from '../types/navigation';
 
@@ -19,7 +19,7 @@ const SearchTabNavigator = () => {
         tabBarStyle: { paddingTop: insets.top },
         tabBarIndicatorStyle: { backgroundColor: 'black' },
       }}>
-      <Tab.Screen name="Users" component={HomeScreen} />
+      <Tab.Screen name="Users" component={UserSearchScreen} />
       <Tab.Screen name="Posts" component={CommentsScreen} />
     </Tab.Navigator>
   );
