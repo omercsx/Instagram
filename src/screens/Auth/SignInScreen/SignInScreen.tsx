@@ -14,6 +14,10 @@ import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import { SignInNavigationProp } from '../../../types/navigation';
 
+import { signIn } from 'aws-amplify/auth';
+import { useEffect } from 'react';
+import { getCurrentUser } from 'aws-amplify/auth';
+
 type SignInData = {
   username: string;
   password: string;
@@ -25,8 +29,32 @@ const SignInScreen = () => {
 
   const { control, handleSubmit } = useForm<SignInData>();
 
-  const onSignInPressed = (data: SignInData) => {
-    console.log(data);
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const user = await getCurrentUser();
+        if (user) {
+          navigation.navigate('Home' as never);
+        }
+      } catch (error) {
+        // User is not signed in
+        console.log('User is not signed in');
+      }
+    };
+    checkUser();
+  }, [navigation]);
+
+  const onSignInPressed = async ({ username, password }: SignInData) => {
+    try {
+      const { isSignedIn } = await signIn({ username, password });
+
+      if (isSignedIn) {
+        navigation.navigate('Home' as never);
+      }
+    } catch (error) {
+      console.log('error signing in', error);
+    }
+
     // validate user
     // navigation.navigate('Home');
   };

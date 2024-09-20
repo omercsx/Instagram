@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
-import { useAuthenticator } from '@aws-amplify/ui-react-native';
+import { signOut } from 'aws-amplify/auth';
 
 import styles from './styles';
 import user from '../../assets/data/user.json';
@@ -13,7 +13,14 @@ import type { ProfileNavigationProp } from '../../types/navigation';
 const ProfileHeader = () => {
   const navigation = useNavigation<ProfileNavigationProp>();
 
-  const { signOut } = useAuthenticator();
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      navigation.navigate('Sign in' as never);
+    } catch (error) {
+      console.log('error signing out: ', error);
+    }
+  };
 
   return (
     <View style={styles.root}>
@@ -43,7 +50,7 @@ const ProfileHeader = () => {
           text="Edit Profile"
           onPress={() => navigation.navigate('EditProfile')}
         />
-        <Button text="Sign Out" onPress={signOut} />
+        <Button text="Sign Out" onPress={handleSignOut} />
       </View>
     </View>
   );
