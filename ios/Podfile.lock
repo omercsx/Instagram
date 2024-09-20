@@ -1301,7 +1301,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-netinfo (11.4.0):
+  - react-native-netinfo (11.4.1):
     - React-Core
   - react-native-pager-view (6.4.1):
     - DoubleConversion
@@ -1981,7 +1981,7 @@ SPEC CHECKSUMS:
   React-microtasksnativemodule: 4943ad8f99be8ccf5a63329fa7d269816609df9e
   react-native-get-random-values: 21325b2244dfa6b58878f51f9aa42821e7ba3d06
   react-native-image-picker: 2fbbafdae7a7c6db9d25df2f2b1db4442d2ca2ad
-  react-native-netinfo: e8e9cf28ede012e47603c9b35b2fa5b19b7bd71d
+  react-native-netinfo: f0a9899081c185db1de5bb2fdc1c88c202a059ac
   react-native-pager-view: c476f76d54f946df5147645e902d3d7173688187
   react-native-safe-area-context: 851c62c48dce80ccaa5637b6aa5991a1bc36eca9
   react-native-video: b315cd7c72de6c78679ffa010fa4e389667a0393
