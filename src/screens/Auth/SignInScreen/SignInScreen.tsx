@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Image,
   StyleSheet,
   useWindowDimensions,
   ScrollView,
+  Alert,
 } from 'react-native';
 import Logo from '../../../assets/images/omercslogo.png';
 import FormInput from '../components/FormInput';
@@ -26,8 +27,9 @@ type SignInData = {
 const SignInScreen = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation<SignInNavigationProp>();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const { control, handleSubmit } = useForm<SignInData>();
+  const { control, handleSubmit, reset } = useForm<SignInData>();
 
   useEffect(() => {
     const checkUser = async () => {
@@ -45,17 +47,29 @@ const SignInScreen = () => {
   }, [navigation]);
 
   const onSignInPressed = async ({ username, password }: SignInData) => {
+    if (isLoading) {
+      return;
+    }
+    setIsLoading(true);
     try {
       const { isSignedIn } = await signIn({ username, password });
 
+      // TODO: Save user data to Context
+
       if (isSignedIn) {
         navigation.navigate('Home' as never);
+
+        // clear form inputs
+        reset({ username: '', password: '' });
       }
     } catch (error) {
-      console.log('error signing in', error);
+      Alert.alert('Oops!', (error as Error).message || 'Something went wrong');
+    } finally {
+      setIsLoading(false);
     }
 
     // validate user
+
     // navigation.navigate('Home');
   };
 
@@ -97,7 +111,10 @@ const SignInScreen = () => {
           }}
         />
 
-        <CustomButton text="Sign In" onPress={handleSubmit(onSignInPressed)} />
+        <CustomButton
+          text={isLoading ? 'Loading...' : 'Sign In'}
+          onPress={handleSubmit(onSignInPressed)}
+        />
 
         <CustomButton
           text="Forgot password?"
