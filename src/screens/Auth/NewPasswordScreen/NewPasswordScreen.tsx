@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native';
 import FormInput from '../components/FormInput';
 import CustomButton from '../components/CustomButton';
-import SocialSignInButtons from '../components/SocialSignInButtons';
+
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import { NewPasswordNavigationProp } from '../../../types/navigation';
+
+import { confirmResetPassword } from 'aws-amplify/auth';
 
 type NewPasswordType = {
   username: string;
@@ -14,13 +16,31 @@ type NewPasswordType = {
 };
 
 const NewPasswordScreen = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { control, handleSubmit } = useForm<NewPasswordType>();
 
   const navigation = useNavigation<NewPasswordNavigationProp>();
 
-  const onSubmitPressed = (data: NewPasswordType) => {
-    console.warn(data);
-    navigation.navigate('Sign in');
+  const onSubmitPressed = async ({
+    username,
+    code,
+    password,
+  }: NewPasswordType) => {
+    try {
+      setIsLoading(true);
+      await confirmResetPassword({
+        username,
+
+        confirmationCode: code,
+        newPassword: password,
+      });
+      Alert.alert('Success', 'Password reset successfully');
+      navigation.navigate('Sign in');
+    } catch (error) {
+      Alert.alert('Oops!', (error as Error).message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const onSignInPress = () => {
@@ -33,10 +53,10 @@ const NewPasswordScreen = () => {
         <Text style={styles.title}>Reset your password</Text>
 
         <FormInput
-          placeholder="Username"
+          placeholder="E-mail"
           name="username"
           control={control}
-          rules={{ required: 'Username is required' }}
+          rules={{ required: 'E-mail is required' }}
         />
 
         <FormInput
@@ -60,7 +80,10 @@ const NewPasswordScreen = () => {
           }}
         />
 
-        <CustomButton text="Submit" onPress={handleSubmit(onSubmitPressed)} />
+        <CustomButton
+          text={isLoading ? 'Loading...' : 'Submit'}
+          onPress={handleSubmit(onSubmitPressed)}
+        />
 
         <CustomButton
           text="Back to Sign in"

@@ -20,7 +20,7 @@ import { useEffect } from 'react';
 import { getCurrentUser } from 'aws-amplify/auth';
 
 type SignInData = {
-  username: string;
+  email: string;
   password: string;
 };
 
@@ -46,13 +46,13 @@ const SignInScreen = () => {
     checkUser();
   }, [navigation]);
 
-  const onSignInPressed = async ({ username, password }: SignInData) => {
+  const onSignInPressed = async ({ email, password }: SignInData) => {
     if (isLoading) {
       return;
     }
     setIsLoading(true);
     try {
-      const { isSignedIn } = await signIn({ username, password });
+      const { isSignedIn } = await signIn({ username: email, password });
 
       // TODO: Save user data to Context
 
@@ -60,9 +60,12 @@ const SignInScreen = () => {
         navigation.navigate('Home' as never);
 
         // clear form inputs
-        reset({ username: '', password: '' });
+        reset({ email: '', password: '' });
       }
     } catch (error) {
+      if ((error as Error).name === 'UserNotConfirmedException') {
+        navigation.navigate('Confirm email', { username: email });
+      }
       Alert.alert('Oops!', (error as Error).message || 'Something went wrong');
     } finally {
       setIsLoading(false);
@@ -91,10 +94,10 @@ const SignInScreen = () => {
         />
 
         <FormInput
-          name="username"
-          placeholder="Username"
+          name="email"
+          placeholder="E-mail"
           control={control}
-          rules={{ required: 'Username is required' }}
+          rules={{ required: 'E-mail is required' }}
         />
 
         <FormInput
