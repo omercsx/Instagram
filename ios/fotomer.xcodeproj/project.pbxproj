@@ -204,6 +204,7 @@
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
 			name = fotomerTests;
+			productName = fotomerTests;
 			productReference = 00E356EE1AD99517003FC87E /* fotomerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -549,6 +550,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = fotomer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = fotomer;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -578,6 +580,7 @@
 				DEVELOPMENT_TEAM = BU7D27M3D7;
 				INFOPLIST_FILE = fotomer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = fotomer;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -669,10 +672,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -745,10 +745,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
