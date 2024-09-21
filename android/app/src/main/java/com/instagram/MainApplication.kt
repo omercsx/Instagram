@@ -1,4 +1,4 @@
-package com.cagrisayir.fotomer
+package com.instagram
 import android.content.res.Configuration
 import expo.modules.ApplicationLifecycleDispatcher
 import expo.modules.ReactNativeHostWrapper

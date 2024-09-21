@@ -1,4 +1,4 @@
-# FOTOMER - Instagram Clone App
+# Instagram Clone App
 
 Full-stack Instagram Clone with React Native and AWS.
 

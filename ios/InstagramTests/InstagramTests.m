@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface fotomerTests : XCTestCase
+@interface InstagramTests : XCTestCase
 
 @end
 
-@implementation fotomerTests
+@implementation InstagramTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {
