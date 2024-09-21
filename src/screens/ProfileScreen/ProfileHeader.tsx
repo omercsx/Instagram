@@ -16,7 +16,6 @@ const ProfileHeader = () => {
   const handleSignOut = async () => {
     try {
       await signOut();
-      navigation.navigate('Sign in' as never);
     } catch (error) {
       console.log('error signing out: ', error);
     }

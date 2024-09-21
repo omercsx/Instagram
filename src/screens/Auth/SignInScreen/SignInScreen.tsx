@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useAuthContext } from '../../../context/AuthContext';
 import {
   View,
   Image,
@@ -16,7 +17,6 @@ import { useForm } from 'react-hook-form';
 import { SignInNavigationProp } from '../../../types/navigation';
 
 import { signIn } from 'aws-amplify/auth';
-import { useEffect } from 'react';
 import { getCurrentUser } from 'aws-amplify/auth';
 
 type SignInData = {
@@ -28,23 +28,9 @@ const SignInScreen = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation<SignInNavigationProp>();
   const [isLoading, setIsLoading] = useState(false);
+  const { setUser } = useAuthContext();
 
   const { control, handleSubmit, reset } = useForm<SignInData>();
-
-  useEffect(() => {
-    const checkUser = async () => {
-      try {
-        const user = await getCurrentUser();
-        if (user) {
-          navigation.navigate('Home' as never);
-        }
-      } catch (error) {
-        // User is not signed in
-        console.log('User is not signed in');
-      }
-    };
-    checkUser();
-  }, [navigation]);
 
   const onSignInPressed = async ({ email, password }: SignInData) => {
     if (isLoading) {
@@ -55,6 +41,8 @@ const SignInScreen = () => {
       const { isSignedIn } = await signIn({ username: email, password });
 
       // TODO: Save user data to Context
+      const user = await getCurrentUser();
+      setUser(user);
 
       if (isSignedIn) {
         navigation.navigate('Home' as never);
