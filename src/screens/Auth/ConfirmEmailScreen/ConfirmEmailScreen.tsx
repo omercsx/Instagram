@@ -14,7 +14,7 @@ import { useRoute } from '@react-navigation/native';
 import { confirmSignUp, resendSignUpCode } from 'aws-amplify/auth';
 
 type ConfirmEmailData = {
-  username: string;
+  email: string;
   code: string;
 };
 
@@ -22,7 +22,7 @@ const ConfirmEmailScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
   const route = useRoute<ConfirmEmailRouteProp>();
   const { control, handleSubmit, watch } = useForm<ConfirmEmailData>({
-    defaultValues: { username: route.params.username },
+    defaultValues: { email: route.params.email },
   });
 
   const usr = watch('username');

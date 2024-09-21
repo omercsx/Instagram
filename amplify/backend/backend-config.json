@@ -1,6 +1,6 @@
 {
   "auth": {
-    "Instagram": {
+    "FOTOMER": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -10,11 +10,10 @@
         ],
         "passwordProtectionSettings": {
           "passwordPolicyCharacters": [],
-          "passwordPolicyMinLength": 8
+          "passwordPolicyMinLength": 6
         },
         "signupAttributes": [
           "EMAIL",
-          "PREFERRED_USERNAME",
           "NAME"
         ],
         "socialProviders": [],
