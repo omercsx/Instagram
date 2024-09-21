@@ -25,15 +25,16 @@ const ConfirmEmailScreen = () => {
     defaultValues: { email: route.params.email },
   });
 
-  const usr = watch('username');
+  const emaill = watch('email');
 
   const navigation = useNavigation<ConfirmEmailNavigationProp>();
 
-  const onConfirmPressed = async ({ username, code }: ConfirmEmailData) => {
+  const onConfirmPressed = async ({ email, code }: ConfirmEmailData) => {
     try {
       setIsLoading(true);
+
       const { isSignUpComplete } = await confirmSignUp({
-        username,
+        username: email,
         confirmationCode: code,
       });
 
@@ -54,7 +55,7 @@ const ConfirmEmailScreen = () => {
   const onResendPress = async () => {
     try {
       setIsLoading(true);
-      await resendSignUpCode({ username: usr });
+      await resendSignUpCode({ username: emaill });
       Alert.alert('Success', 'Code resent successfully');
     } catch (error) {
       Alert.alert('Oops!', (error as Error).message);
@@ -69,11 +70,11 @@ const ConfirmEmailScreen = () => {
         <Text style={styles.title}>Confirm your email</Text>
 
         <FormInput
-          name="username"
+          name="email"
           control={control}
-          placeholder="Username"
+          placeholder="Email"
           rules={{
-            required: 'Username is required',
+            required: 'Email is required',
           }}
         />
 
