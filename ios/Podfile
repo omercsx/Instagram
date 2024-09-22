@@ -11,7 +11,7 @@ prepare_react_native_project!
 # Explicitly set the linkage
 use_frameworks! :linkage => :static
 
-target 'fotomer' do
+target 'Instagram' do
   use_expo_modules!
   post_integrate do |installer|
     begin
@@ -27,7 +27,7 @@ target 'fotomer' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'fotomerTests' do
+  target 'InstagramTests' do
     inherit! :complete
     # Pods for testing
   end
