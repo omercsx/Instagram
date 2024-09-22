@@ -77,9 +77,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.instagram"
+    namespace "com.cagrisayir.fotomer"
     defaultConfig {
-        applicationId "com.instagram"
+        applicationId "com.cagrisayir.fotomer"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
